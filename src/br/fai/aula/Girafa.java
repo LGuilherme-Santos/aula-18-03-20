@@ -2,7 +2,7 @@ package br.fai.aula;
 
 public class Girafa extends Animal{
 
-	public Girafa(int id, String nome) {
+	public Girafa() {
 		setId(id);
 		setNome(nome);
 	}
