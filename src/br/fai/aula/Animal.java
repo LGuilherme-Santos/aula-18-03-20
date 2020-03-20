@@ -4,6 +4,7 @@ public abstract class Animal {
 	
 	int id;
 	String nome;
+	
 	public int getId() {
 		return id;
 	}
