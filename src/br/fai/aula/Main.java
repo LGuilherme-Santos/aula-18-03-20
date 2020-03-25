@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -14,12 +16,17 @@ public class Main {
 
 	Scanner scanner = new Scanner(System.in);
 
-	Cavalo cavalo = new Cavalo();
+	Cavalo c1 = new Cavalo("Marchador", 123);
+	Cavalo c2 = new Cavalo("Manga larga", 456489);
+	Cavalo c3 = new Cavalo("DUck", 65412);
 
-	Girafa girafa = new Girafa();
+	Girafa g1 = new Girafa("Gorda", 15896);
+	Girafa g2 = new Girafa("Magra", 6556);
+	Girafa g3 = new Girafa("Pescoçuda", 56431);
 
-	// static List<Animal> listaDeAnimais = new ArrayList<Animal>();
-	static List<Cavalo> listaDeCavalo = new ArrayList<Cavalo>();
+	List<Animal> listaDeAnimais = new ArrayList<Animal>();
+	List<Cavalo> listaDeCavalo = new ArrayList<Cavalo>();
+	List<Girafa> listaDeGirafa = new ArrayList<>();
 
 	private void start() {
 
@@ -32,7 +39,10 @@ public class Main {
 
 		int opcao = 0;
 
+		System.out.println("INICIO");
+
 		do {
+			System.out.println(" ");
 			System.out.println("1. Cadastrar cavalo");
 			System.out.println("2. Cadastrar girafa");
 			System.out.println("3. Listar cavalos");
@@ -50,50 +60,108 @@ public class Main {
 
 			case 1:
 				cadastrarCavalo();
-				// listaDeCavalo.add();
 
-				System.out.println("O cavalo foi inserido com sucesso!");
-				System.out.println(" ");
 				break;
 
 			case 2:
+				cadastrarGirafa();
 
 				break;
 
 			case 3:
-				for (Cavalo animal : listaDeCavalo) {
+				for (Animal animal : listaDeCavalo) {
 
-					
-					System.out.println("Dados do cavalo: " + animal.getId() + "|" + animal.getNome());
-					System.out.println("");
+					System.out.println("Dados do cavalo: " + animal);
 
 				}
-			case 4:
+
 				break;
+
+			case 4:
+				for (Animal animal : listaDeGirafa) {
+
+					System.out.println("Dados da girafa: " + animal);
+
+				}
+				break;
+
+			case 5:
+
+				for (Animal animais : listaDeAnimais) {
+					if (animais instanceof Cavalo) {
+						Cavalo c = (Cavalo) animais;
+						System.out.println("Dados do animal: " + c.getTipo() + animais);
+					} else if (animais instanceof Girafa) {
+						Girafa g = (Girafa) animais;
+						System.out.println("Dados do animal: " + g.getTipo() + animais);
+					}
+
+				}
+
+				break;
+
+			case 6:
+
+				for (Animal animal : listaDeAnimais) {
+					Animal a = (Animal) animal;
+					System.out.println("Id do animal: ");
+					a.id = scanner.nextInt();
+					listaDeAnimais.remove(a);
+
+				}
+				break;
+
+			case 7:
+				System.out.println(" ");
+				System.out.println("Numero de cavalos cadastrados: " + listaDeCavalo.size());
+				for (Animal animal : listaDeCavalo) {
+
+					System.out.println("Dados do cavalo: " + animal);
+
+				}
+				System.out.println(" ");
+				System.out.println("Numero de girafas cadastradas: " + listaDeGirafa.size());
+				for (Animal animal : listaDeGirafa) {
+
+					System.out.println("Dados da girafa: " + animal);
+
+				}
+				System.out.println(" ");
+				System.out.println("Total de animais cadastrados: " + listaDeAnimais.size());
 
 			}
 
 		} while (opcao != 8);
+
 	}
 
 	public void cadastrarCavalo() {
 
-		System.out.println("Id do cavalo: ");
-		cavalo.id = scanner.nextInt();
+		listaDeCavalo.add(c1);
+		listaDeCavalo.add(c2);
+		listaDeCavalo.add(c3);
 
-		System.out.println("Nome do cavalo: ");
-		cavalo.setNome(scanner.next());
-		listaDeCavalo.add(cavalo);
+		listaDeAnimais.add(c1);
+		listaDeAnimais.add(c2);
+		listaDeAnimais.add(c3);
+
+		System.out.println("O cavalo foi inserido com sucesso!");
+		System.out.println(" ");
 
 	}
 
 	public void cadastrarGirafa() {
 
-		System.out.println("Id do girafa: ");
-		girafa.id = scanner.nextInt();
+		listaDeGirafa.add(g1);
+		listaDeGirafa.add(g2);
+		listaDeGirafa.add(g3);
 
-		System.out.println("Nome do girafa: ");
-		girafa.nome = scanner.next();
+		listaDeAnimais.add(g1);
+		listaDeAnimais.add(g2);
+		listaDeAnimais.add(g3);
+
+		System.out.println("A girafa foi inserido com sucesso!");
+		System.out.println(" ");
 
 	}
 
