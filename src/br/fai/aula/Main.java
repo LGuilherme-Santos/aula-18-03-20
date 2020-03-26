@@ -69,65 +69,31 @@ public class Main {
 				break;
 
 			case 3:
-				for (Animal animal : listaDeCavalo) {
-
-					System.out.println("Dados do cavalo: " + animal);
-
-				}
+				listarCavalos();
 
 				break;
 
 			case 4:
-				for (Animal animal : listaDeGirafa) {
-
-					System.out.println("Dados da girafa: " + animal);
-
-				}
+				listarGirafas();
 				break;
 
 			case 5:
-
-				for (Animal animais : listaDeAnimais) {
-					if (animais instanceof Cavalo) {
-						Cavalo c = (Cavalo) animais;
-						System.out.println("Dados do animal: " + c.getTipo() + animais);
-					} else if (animais instanceof Girafa) {
-						Girafa g = (Girafa) animais;
-						System.out.println("Dados do animal: " + g.getTipo() + animais);
-					}
-
-				}
+				listarAnimais();
 
 				break;
 
 			case 6:
+				removerAnimal();
 
-				for (Animal animal : listaDeAnimais) {
-					Animal a = (Animal) animal;
-					System.out.println("Id do animal: ");
-					a.id = scanner.nextInt();
-					listaDeAnimais.remove(a);
-
-				}
 				break;
 
 			case 7:
-				System.out.println(" ");
-				System.out.println("Numero de cavalos cadastrados: " + listaDeCavalo.size());
-				for (Animal animal : listaDeCavalo) {
+				listarTamanhoDaLista();
 
-					System.out.println("Dados do cavalo: " + animal);
-
-				}
-				System.out.println(" ");
-				System.out.println("Numero de girafas cadastradas: " + listaDeGirafa.size());
-				for (Animal animal : listaDeGirafa) {
-
-					System.out.println("Dados da girafa: " + animal);
-
-				}
-				System.out.println(" ");
-				System.out.println("Total de animais cadastrados: " + listaDeAnimais.size());
+				break;
+				
+			case 8:
+				System.out.println("Saindo.....");
 
 			}
 
@@ -163,6 +129,65 @@ public class Main {
 		System.out.println("A girafa foi inserido com sucesso!");
 		System.out.println(" ");
 
+	}
+
+	public void listarCavalos() {
+		for (Animal animal : listaDeCavalo) {
+
+			System.out.println("Dados do cavalo: " + animal);
+
+		}
+	}
+
+	public void listarGirafas() {
+		for (Animal animal : listaDeGirafa) {
+
+			System.out.println("Dados da girafa: " + animal);
+
+		}
+	}
+
+	private void listarAnimais() {
+		for (Animal animais : listaDeAnimais) {
+			if (animais instanceof Cavalo) {
+				Cavalo c = (Cavalo) animais;
+				System.out.println("Dados do animal: " + c.getTipo() + animais);
+			} else if (animais instanceof Girafa) {
+				Girafa g = (Girafa) animais;
+				System.out.println("Dados do animal: " + g.getTipo() + animais);
+			}
+
+		}
+	}
+
+	private void removerAnimal() {
+		for (Animal animal : listaDeAnimais) {
+			Animal a = (Animal) animal;
+			System.out.println("Id do animal: ");
+			a.id = scanner.nextInt();
+			listaDeAnimais.remove(a);
+
+		}
+
+	}
+
+	private void listarTamanhoDaLista() {
+		System.out.println(" ");
+		System.out.println("Numero de cavalos cadastrados: " + listaDeCavalo.size());
+		for (Animal animal : listaDeCavalo) {
+
+			System.out.println("Dados do cavalo: " + animal);
+
+		}
+		System.out.println(" ");
+		System.out.println("Numero de girafas cadastradas: " + listaDeGirafa.size());
+		for (Animal animal : listaDeGirafa) {
+
+			System.out.println("Dados da girafa: " + animal);
+
+		}
+		System.out.println(" ");
+		System.out.println("Total de animais cadastrados: " + listaDeAnimais.size());
 	}
 
 }
